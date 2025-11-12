@@ -1,0 +1,37 @@
+
+
+header{
+    background-color: #0088f8;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+header h1 {
+    color: white;
+    margin: 0;
+}
+
+h1 {
+    color: rgb(41, 7, 7);
+    margin: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    display : inline-block ;
+    margin: 0 15px ;
+}
+img {
+width: 100%;
+height: auto;
+max-width: 3840px;
+max-height: 400px;
+object-fit: cover;
+}
