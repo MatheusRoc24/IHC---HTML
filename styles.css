@@ -38,4 +38,21 @@ height: max-content;
 max-width: 100%;
 object-fit: cover;
 filter: opacity(20%);
+border-style:circle;
 }
+.Sobre-nos {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    border-style: solid;
+}
+
+.paragrafo-texto{
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
