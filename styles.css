@@ -1,7 +1,11 @@
 
+*{
+    font-family: "Momo Signature", cursive;
+}
+
 
 header{
-    background-color: #0088f8;
+    background-color: #489ee4;
     padding: 20px;
     text-align: center;
     font-family: 'Arial', sans-serif;
@@ -16,7 +20,7 @@ header h1 {
 }
 
 h1 {
-    color: rgb(41, 7, 7);
+    color: rgb(183, 70, 70);
     margin: 0;
 }
 nav ul li {
@@ -30,8 +34,8 @@ nav ul li a {
 }
 img {
 width: 100%;
-height: auto;
-max-width: 3840px;
-max-height: 400px;
+height: max-content;
+max-width: 100%;
 object-fit: cover;
+filter: opacity(20%);
 }
