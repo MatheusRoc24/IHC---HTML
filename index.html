@@ -1,44 +1,90 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Momo+Signature&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="padrao.css">
 
-    <link rel="stylesheet" href="styles.css">
-    <title>Documento</title>
-</head>
+    <title>Confeitaria</title>
+  </head>
+  <body>
     <header>
-        <h1> Confeitaria Sempre Doce</h1> 
+      <div>
+        <h1>Confeitaria Sempre Doce</h1>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="contato.html">Contato</a>
+          <ul>
+            <li>Início</li>
+            <li>Sobre</li>
+            <li>
+              <a class="link" href="cardapio.html">Cardápio</a>
+            </li>
+            <li>Contato</li>
+          </ul>
         </nav>
+      </div>
     </header>
+    
     <div>
-<img src="https://images.pexels.com/photos/10661288/pexels-photo-10661288.jpeg"">
-    </div>
-    <div class="Sobre-Nos"></div>
-    <p class ="paragrafo-texto">
-        <h2>Bem-vindo à Confeitaria Sempre Doce!</h2>
-        <p>Na Sempre Doce, acreditamos que cada doce é uma obra de arte feita com amor e dedicação. Nossa confeitaria oferece uma variedade de bolos, tortas, cupcakes e doces personalizados para todas as ocasiões. Venha nos visitar e experimente o sabor irresistível das nossas criações!</p>
-        </p>
+      <img src="https://www.comidaereceitas.com.br/img/sizeswp/1200x675/2020/05/bolo_chocolate_leite.jpg" alt="Imagem de bolo"/>
     </div>
 
-    <div>
-        <h2>Nosso cardapio</h2>
-        <div>
-            <h3>Bolo de Chocolate</h3>
-        </div>
-        <div>
-            <h3> Bolo de morango</h3>
-        </div>
-        <div><h3> Bolo de cenoura</h3>
-        </div>
-        </div>
+    <div class="sobre-nos">
+      <h2 style="font-size: 25px;">Sobre Nós</h2>
+      <p class="paragrafo-texto">
+        Somos a confeitaria sempre doce dedicada a criar bolos
+        deliciosos e personalizados para todas as ocasiões.
+        Nossa paixão pela confeitaria é refletida em cada
+        criação que sai da nossa cozinha.
+      </p>
     </div>
+
+    <div class="sobre-nos">
+      <h2 style="font-size: 25px;">Nosso Cardápio</h2>
+      <div class="itens-cardapio">
+        <div class="item-cardapio">
+          
+          <h3>Bolo de Chocolate</h3>
+          
+          <p class="descricao">
+            Um clássico irresistível com
+            camadas de chocolate
+          </p>
+          <img class="img-item" src="https://www.comidaereceitas.com.br/img/sizeswp/1200x675/2020/05/bolo_chocolate_leite.jpg" />
+        </div>
+
+        <div class="item-cardapio">
+          <h3>Bolo de Morango</h3>
+          <p class="descricao">
+            Fresco e frutado, perfeito para
+            qualquer ocasião
+          </p>
+          <img class="img-item" src="https://www.comidaereceitas.com.br/img/sizeswp/1200x675/2020/05/bolo_chocolate_leite.jpg" />
+        </div>
+
+        <div class="item-cardapio">
+          <h3>Bolo de Cenoura</h3>
+          <p class="descricao">
+            Uma delícia tradicional com 
+            cobertura de chocolate.
+          </p>
+          <img class="img-item" src="https://www.comidaereceitas.com.br/img/sizeswp/1200x675/2020/05/bolo_chocolate_leite.jpg" />
+        </div>
+
+      </div>
+    </div>
+    
+    <footer>
+      <p>
+        &copy; 2025 Confeitaria Sempre Doce.
+        Todos os direitos reservados.
+      </p>
+    </footer>
+
+  </body>
 </html>
