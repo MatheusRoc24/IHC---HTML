@@ -69,12 +69,74 @@
       </div>
     </div>
     
+    <!-- Seção para exibir dados da API e botão de atualização -->
+    <section class="api-section">
+      <h2>Dados da API</h2>
+      <button id="api-refresh" class="api-refresh-btn">Atualizar dados</button>
+      <pre id="api-data" class="api-data">Carregando...</pre>
+    </section>
+
     <footer>
       <p>
         &copy; 2025 Confeitaria Sempre Doce.
         Todos os direitos reservados.
       </p>
     </footer>
+    
+    <script src="cardapio.js"></script>
 
+    <script>
+      // Faz uma requisição GET esperando JSON e atualiza o elemento #api-data
+      async function fetchApi() {
+        const output = document.getElementById('api-data');
+        output.textContent = 'Carregando...';
+        try {
+          const res = await fetch('https://ihc-html.onrender.com', {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (!res.ok) throw new Error('Resposta não OK: ' + res.status);
+
+          const contentType = res.headers.get('content-type') || '';
+          if (contentType.includes('application/json')) {
+            const data = await res.json();
+            output.textContent = JSON.stringify(data, null, 2);
+
+            // Tenta extrair a lista de itens do JSON (vários formatos possíveis)
+            let items = null;
+            if (Array.isArray(data)) items = data;
+            else if (Array.isArray(data.items)) items = data.items;
+            else if (Array.isArray(data.data)) items = data.data;
+            else if (Array.isArray(data.produtos)) items = data.produtos;
+            else if (Array.isArray(data.cardapio)) items = data.cardapio;
+            else items = data;
+
+            // Se existir a função de renderização, chama para popular o cardápio
+            if (window.renderCardapio) {
+              try {
+                window.renderCardapio(items);
+              } catch (e) {
+                console.warn('Erro ao renderizar cardápio:', e);
+              }
+            }
+          } else {
+            const text = await res.text();
+            output.textContent = text;
+          }
+        } catch (err) {
+          output.textContent = 'Erro ao consultar API: ' + err.message;
+          console.error(err);
+        }
+      }
+
+      document.getElementById('api-refresh').addEventListener('click', fetchApi);
+
+      // Busca inicial
+      fetchApi();
+    </script>
   </body>
 </html>
