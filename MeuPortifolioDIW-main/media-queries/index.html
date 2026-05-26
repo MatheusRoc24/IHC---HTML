@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries</title>
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Vinculando os arquivos CSS -->
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="header-left">
+            <a href="../home/index.html">
+                <h1>Estudos</h1>
+            </a>
+            <p>Projeto de desenvolvimento de IW</p>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <nav class="menu" id="menu">
+        <ul>
+            <li><a href="../home/index.html">Home</a></li>
+            <li><a href="index.html">Media Queries</a></li>
+            <li><a href="../flexbox/index.html">Layouts Flexíveis</a></li>
+            <li><a href="../grid/index.html">CSS Grid</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<section class="article-page">
+
+<div class="article-full">
+
+    <h2>O que são Media Queries?</h2>
+    
+    <div class="lesson-content">
+        <p>Como realmente ter certeza de que nossa página web está funcionando corretamente em todos os dispositivos? Esta com certeza é a pergunta do milhão, pois se não utilizarmos os recursos corretamente será muito improvável que vamos conseguir responder esta pergunta.</p>
+        <p class="note-block">Atualmente sabemos que o uso de dispositivos móveis, como o smartphone, é o que domina o mundo quando falamos em acesso à informação, e por isso o requerimento de criar páginas acessíveis para todos os dispositivos não é mais uma opção. É sim uma obrigação.</p>
+        <p>Neste artigo vamos entender o básico necessário para utilizarmos Media Query, um dos recursos mais poderosos quando falamos em criar layouts responsivos, ou seja, layouts que funcionam em todos os dispositivos.</p>
+
+        <h3>Entendendo o design responsivo</h3>
+        <p>Para tentar resumir um pouco, design web responsivo é o forma de uso do HTML e CSS para a criação de uma aplicação (ou página) web que irá funcionar corretamente em todos os dispositivos, independentemente do tamanho da tela de cada dispositivo.</p>
+        <p>Todos os elementos que temos em tela, como botões, imagens, funcionalidade e demais recursos devem ser vistos e ter a mesma funcionalidade em monitores gigantescos e também em telas menores como a de um smartphone.</p>
+        <p>E é esse o pensamento de responsividade que todos nós, desenvolvedores de softwares, devemos ter ao criar qualquer tipo de página ou aplicação web. É válido salientar também, que existem diversas técnicas além do Media Query que podemos utilizar para nos auxiliar no desenvolvimento de páginas responsivas.</p>
+        <ul>
+            <li>Usar unidades relativas ao invés de absolutas (por exemplo, usar % ao invés de px);</li>
+            <li>Configurar corretamente o viewport/scale da página;</li>
+            <li>Utilizar recursos de acessibilidade de páginas.</li>
+        </ul>
+        <p class="note-block">Porém, neste artigo vamos focar em Media Query pois na minha opinião é a melhor maneira de começarmos.</p>
+
+        <h3>O que são Media Queries</h3>
+        <p>Media Query é um recurso do CSS que veio juntamente com a versão CSS3. Com este recurso, desenvolvedores tem a possibilidade de modificar o comportamento da página de acordo com o tamanho (width e height) das telas, ou seja, mediante a diferentes tamanhos de telas, a página terá diferentes comportamentos.</p>
+        <p>Utilizando Media Query você terá acesso a uma espécie de Framework para escrever o código somente uma vez e utiliza-lo em toda a sua aplicação/página. Logicamente, se estamos falando somente de uma página em específico, talvez você não veja tanta diferença assim, mas no momento que você trabalhar em uma aplicação que controla dezenas de páginas, você verá uma mudança gigantesca no uso do Media Query.</p>
+        <p>Essa fato se dá pois ao usar Media Query você estará levando em consideração alguns fatores, como mencionei width e height, mas muito além disso, você deverá levar em consideração a estrutura, localização, links, posições, dentre outros.</p>
+
+        <h3>A estrutura do Media Query</h3>
+        <pre><code>@media media-type and (expression) {
+  /*CSS code*/
+}</code></pre>
+        <p>A estrutura padrão que devemos utilizar é a estrutura citada acima, pois ela contém alguns recursos que irão facilitar a mudança de comportamento dos nossos elementos. Vamos analisar melhor:</p>
+        <ul>
+            <li><strong>@media</strong> é a palavra-chave. Desta maneira que nossa aplicação consegue identificar que a partir desta palavra terá uma mudança de comportamento. Não é possível utilizar sem esta palavra-chave.</li>
+            <li><strong>media-type</strong> é a forma de definir qual é o tipo de tela que desejamos criar o comportamento. Pode ser screen, handheld, print, all…é a forma que temos para direcionar o comportamento para uma tela em específico.</li>
+            <li><strong>expression</strong> é realmente a condição que devemos colocar para aplicar o nosso novo comportamento, por exemplo, max-width: 400px. Sempre que o tamanho da nossa tela estiver dentro da condição citada, o novo comportamento irá ser aplicado.</li>
+        </ul>
+        
+        <pre><code>@media screen and (max-width: 450px) {
+  body {
+    background-color: #004aad;
+  }
+}</code></pre>
+        <p>No exemplo acima, estamos alterando o comportamento do body, aplicando uma cor de fundo diferente. Sempre que o máximo de largura da tela for 450px, a nova cor de fundo será aplicada.</p>
+        <p>Por padrão, podemos utilizar também sem especificar o media-type, aplicando o comportamento para todas as telas, mediante a expressão que definimos.</p>
+        <pre><code>@media and (max-width: 450px) {
+  body {
+    background-color: #004aad;
+  }
+}</code></pre>
+
+        <h3>Em que lugar escrever as Media Queries?</h3>
+        <p>Sabemos que o uso da Media Query é realmente para alterar um comportamento de CSS. Com base nisso, devemos sempre escrever a Media Query dentro no nosso arquivo CSS, ou no lugar onde definimos os estilos CSS.</p>
+        <p>Basicamente, existem três formas de definição do CSS:</p>
+        <ul>
+            <li><strong>CSS Externo:</strong> este com certeza é o melhor uso que podemos ter. Devemos definir um arquivo CSS externo ao nosso HTML e somente chamar este CSS dentro do HTML. É uma forma muito mais organizar e limpa de trabalhar com arquivo de estilos;</li>
+            <li><strong>CSS Interno:</strong> podemos também utilizar o CSS dentro do HTML através da tag &lt;head&gt;, onde podemos utilizar a tag &lt;style&gt; e colocar todas as classes ou id’s referente ao CSS;</li>
+            <li><strong>CSS inline:</strong> também podemos utilizar diretamente na &lt;div&gt; ou qualquer outra tag. Para fazer isso, basta digita style=”alterações” e colocar todas as alterações necessárias do CSS;</li>
+        </ul>
+        <p>Não importa qual a forma que estamos utilizando para vincular o CSS no nosso HTML. De qualquer maneira podemos utilizar Media Queries dentro do CSS para alterar qualquer comportamento desejado.</p>
+
+        <h3>Media Query com Links</h3>
+        <p>Porém, também existe uma alternativa caso você não queira vincular a sua Media Query dentro do CSS. Esta alternativa inclui utilizar Media Queries diretamente na tag &lt;link&gt; do seu arquivo HTML. Desta maneira, você não precisa criar um arquivo CSS somente para a sua Media Query.</p>
+        <pre><code>&lt;link
+    rel="stylesheet"
+    media="(max-width:800px) and (min-width:451px)"
+    href="tablet.css"/&gt;
+&lt;link rel="stylesheet" media="(max-width:450px)" href="smartphone.css" /&gt;</code></pre>
+        <p>Desta maneira toda a lógica que você precisa para usar o Media Query ficará dentro da tag &lt;link&gt;, o que dependendo do cenário, poder ser até mas produtivo para você.</p>
+        <p>É válido salientar que eu não recomendo isso para projetos maiores, pois o uso desta técnica pode poluir e muito o seu arquivo HTML. Mas é importante conhecermos que existe essa possibilidade que pode ser mais produtiva se for um projeto mínimo.</p>
+    </div>
+
+    <hr>
+
+    <h2>Demonstração Prática de Media Queries</h2>
+
+    <div class="demo-section">
+
+        <h3>Redimensione a tela para ver a mágica!</h3>
+
+        <div class="responsive-demo" id="responsiveBox">
+            <span id="screenInfo">Largura da tela: --px</span><br>
+            <span id="boxInfo">Largura da caixa: --px</span>
+        </div>
+
+    </div>
+
+    <div class="demo-guide">
+        <h4>Breakpoints</h4>
+        <ul>
+            <li>&le; 480px &rarr; mobile</li>
+            <li>481–768px &rarr; tablet</li>
+            <li>769–1024px &rarr; laptop</li>
+            <li>&ge; 1025px &rarr; desktop</li>
+        </ul>
+    </div>
+
+    <div class="code-window">
+
+        <div class="code-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+        </div>
+
+        <pre class="code-block"><code>
+@media (max-width: 480px){
+    .responsive-demo{
+        width: 100%;
+        background-color: #081a84;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+    .responsive-demo{
+        width: 80%;
+        background-color: #1033ac;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px){
+    .responsive-demo{
+        width: 60%;
+        background-color: #194dd5;
+    }
+}
+
+@media (min-width: 1025px){
+    .responsive-demo{
+        width: 40%;
+        background-color: #2166fd;
+    }
+}
+        </code></pre>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>Projeto Faculdade</p>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        menu.classList.toggle('active');
+    });
+
+    // Lógica para mostrar as larguras da tela e da caixa dinamicamente
+    const responsiveBox = document.getElementById('responsiveBox');
+    const screenInfo = document.getElementById('screenInfo');
+    const boxInfo = document.getElementById('boxInfo');
+
+    function updateWidths() {
+        const screenWidth = window.innerWidth;
+        const boxWidth = responsiveBox.offsetWidth;
+        
+        screenInfo.textContent = `Largura da tela: ${screenWidth}px`;
+        boxInfo.textContent = `Largura da caixa: ${boxWidth}px`;
+    }
+
+    // Atualiza no carregamento e sempre que redimensionar a tela
+    window.addEventListener('resize', updateWidths);
+    updateWidths(); // Chamada inicial
+
+    // Scroll Reveal Animation para o conteúdo da aula
+    const revealElements = document.querySelectorAll('.lesson-content p, .lesson-content h3, .lesson-content ul, .lesson-content pre');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>

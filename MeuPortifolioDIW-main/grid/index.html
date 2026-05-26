@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Layout</title>
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Vinculando os arquivos CSS -->
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="header-left">
+            <a href="../home/index.html">
+                <h1>Estudos</h1>
+            </a>
+            <p>Projeto de desenvolvimento de IW</p>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <nav class="menu" id="menu">
+        <ul>
+            <li><a href="../home/index.html">Home</a></li>
+            <li><a href="../media-queries/index.html">Media Queries</a></li>
+            <li><a href="../flexbox/index.html">Layouts Flexíveis</a></li>
+            <li><a href="index.html">CSS Grid</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<section class="article-page">
+
+<div class="article-full">
+
+    <h2>CSS Grid Layout</h2>
+    
+    <div class="lesson-content">
+        <p>CSS Grid Layout é um sistema de layout bidimensional do CSS criado para organizar elementos em linhas e colunas de forma estruturada e responsiva. Ele facilita a construção de interfaces modernas sem depender de float ou frameworks externos.</p>
+        
+        <p>Os principais conceitos são:</p>
+        <ul>
+            <li><strong>Container Grid:</strong> elemento pai que recebe <code>display: grid</code>.</li>
+            <li><strong>Grid Items:</strong> elementos filhos organizados dentro da grade.</li>
+            <li><strong>Colunas e linhas:</strong> definidas com <code>grid-template-columns</code> e <code>grid-template-rows</code>.</li>
+            <li><strong>Espaçamento:</strong> controlado com <code>gap</code>.</li>
+            <li><strong>Posicionamento:</strong> itens podem ocupar múltiplas linhas ou colunas usando <code>grid-column</code> e <code>grid-row</code>.</li>
+            <li><strong>Responsividade:</strong> funções como <code>repeat()</code>, <code>auto-fit</code>, <code>auto-fill</code> e <code>minmax()</code> permitem layouts adaptáveis.</li>
+        </ul>
+
+        <h3>Exemplo básico</h3>
+        <pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}</code></pre>
+        
+        <p>Nesse exemplo:</p>
+        <ul>
+            <li><code>display: grid</code> ativa o Grid.</li>
+            <li><code>1fr</code> divide o espaço igualmente (1 fração do espaço disponível).</li>
+            <li><code>gap</code> adiciona espaçamento entre os elementos.</li>
+        </ul>
+
+        <h3>Vantagens</h3>
+        <ul>
+            <li>Organização mais profissional do layout.</li>
+            <li>Melhor controle de alinhamento bidimensional.</li>
+            <li>Facilidade para criar dashboards, galerias e páginas responsivas.</li>
+            <li>Reduz a necessidade de media queries complexas.</li>
+        </ul>
+        <p class="note-block">O CSS Grid é indicado principalmente para estruturar páginas completas e layouts complexos.</p>
+    </div>
+
+    <hr>
+
+    <h2>Demonstração Prática de CSS Grid</h2>
+
+    <!-- CONTAINER DA DEMONSTRAÇÃO INTERATIVA -->
+    <div class="interactive-demo-container">
+        
+        <!-- PAINEL DE CONTROLES -->
+        <div class="controls-panel">
+            <h3 style="margin-bottom: 20px; color: #FFFFFF; font-size: 1.2rem;">Painel de Controle</h3>
+            
+            <div class="control-group">
+                <label for="columnsInput">Colunas (grid-template-columns): <span id="columnsVal">3</span></label>
+                <input type="range" id="columnsInput" min="1" max="5" value="3">
+            </div>
+
+            <div class="control-group">
+                <label for="gapInput">Espaçamento (gap): <span id="gapVal">15px</span></label>
+                <input type="range" id="gapInput" min="0" max="40" value="15">
+            </div>
+
+            <div class="control-group">
+                <label for="justifyInput">Alinhamento Horizontal (justify-items):</label>
+                <select id="justifyInput">
+                    <option value="stretch">stretch (esticar)</option>
+                    <option value="center">center (centro)</option>
+                    <option value="start">start (início)</option>
+                    <option value="end">end (fim)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="alignInput">Alinhamento Vertical (align-items):</label>
+                <select id="alignInput">
+                    <option value="stretch">stretch (esticar)</option>
+                    <option value="center">center (centro)</option>
+                    <option value="start">start (início)</option>
+                    <option value="end">end (fim)</option>
+                </select>
+            </div>
+
+            <div class="control-group buttons-row">
+                <button id="addItemBtn" class="control-btn">Adicionar Item</button>
+                <button id="removeItemBtn" class="control-btn secondary">Remover Item</button>
+            </div>
+        </div>
+
+        <!-- VISUALIZAÇÃO DO GRID -->
+        <div class="grid-preview-container">
+            <div class="grid-demo" id="gridDemo">
+                <!-- Células com outlines e itens internos -->
+                <div class="grid-cell"><div class="grid-item">Item 1</div></div>
+                <div class="grid-cell"><div class="grid-item">Item 2</div></div>
+                <div class="grid-cell"><div class="grid-item">Item 3</div></div>
+                <div class="grid-cell"><div class="grid-item">Item 4</div></div>
+                <div class="grid-cell"><div class="grid-item">Item 5</div></div>
+                <div class="grid-cell"><div class="grid-item">Item 6</div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JANELA DE CÓDIGO DINÂMICA (ESTILO VS CODE) -->
+    <div class="code-window">
+        <div class="code-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="code-title" style="margin-left: 10px; font-size: 0.8rem; color: #64748B;">style.css</span>
+        </div>
+        <pre class="code-block"><code id="cssCode">.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: stretch;
+    align-items: stretch;
+}</code></pre>
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>Projeto Faculdade</p>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        menu.classList.toggle('active');
+    });
+
+    // Lógica da demonstração interativa do Grid
+    const gridDemo = document.getElementById('gridDemo');
+    const columnsInput = document.getElementById('columnsInput');
+    const gapInput = document.getElementById('gapInput');
+    const justifyInput = document.getElementById('justifyInput');
+    const alignInput = document.getElementById('alignInput');
+    const columnsVal = document.getElementById('columnsVal');
+    const gapVal = document.getElementById('gapVal');
+    const cssCode = document.getElementById('cssCode');
+    const addItemBtn = document.getElementById('addItemBtn');
+    const removeItemBtn = document.getElementById('removeItemBtn');
+
+    let itemCount = 6;
+
+    function updateGrid() {
+        const cols = columnsInput.value;
+        const gap = gapInput.value;
+        const justify = justifyInput.value;
+        const align = alignInput.value;
+
+        // Atualiza os textos dos labels
+        columnsVal.textContent = cols;
+        gapVal.textContent = `${gap}px`;
+
+        // Aplica os estilos no container do grid
+        gridDemo.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+        gridDemo.style.gap = `${gap}px`;
+        gridDemo.style.justifyItems = justify;
+        gridDemo.style.alignItems = align;
+
+        // Atualiza a janela de código CSS
+        cssCode.textContent = `.container {
+    display: grid;
+    grid-template-columns: repeat(${cols}, 1fr);
+    gap: ${gap}px;
+    justify-items: ${justify};
+    align-items: ${align};
+}`;
+    }
+
+    // Event Listeners para os controles
+    columnsInput.addEventListener('input', updateGrid);
+    gapInput.addEventListener('input', updateGrid);
+    justifyInput.addEventListener('change', updateGrid);
+    alignInput.addEventListener('change', updateGrid);
+
+    // Botões para adicionar e remover itens
+    addItemBtn.addEventListener('click', () => {
+        itemCount++;
+        
+        // Cria a célula de background
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+
+        // Cria o item colorido interno
+        const item = document.createElement('div');
+        item.className = 'grid-item';
+        item.textContent = `Item ${itemCount}`;
+        
+        cell.appendChild(item);
+        gridDemo.appendChild(cell);
+        updateGrid();
+    });
+
+    removeItemBtn.addEventListener('click', () => {
+        if (itemCount > 1) {
+            gridDemo.removeChild(gridDemo.lastElementChild);
+            itemCount--;
+            updateGrid();
+        }
+    });
+
+    // Chamada inicial
+    updateGrid();
+
+    // Scroll Reveal Animation para o conteúdo da aula
+    const revealElements = document.querySelectorAll('.lesson-content p, .lesson-content h3, .lesson-content ul, .lesson-content pre');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>

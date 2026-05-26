@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layouts Flexíveis (Flexbox)</title>
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Vinculando os arquivos CSS -->
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="header-left">
+            <a href="../home/index.html">
+                <h1>Estudos</h1>
+            </a>
+            <p>Projeto de desenvolvimento de IW</p>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <nav class="menu" id="menu">
+        <ul>
+            <li><a href="../home/index.html">Home</a></li>
+            <li><a href="../media-queries/index.html">Media Queries</a></li>
+            <li><a href="index.html">Layouts Flexíveis</a></li>
+            <li><a href="../grid/index.html">CSS Grid</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<section class="article-page">
+
+<div class="article-full">
+
+    <h2>O que é Flex Layout?</h2>
+    
+    <div class="lesson-content">
+        <p>O Flex Layout é um paradigma de estruturação de layout criado no Store Framework para permitir a construção de layouts complexos. Esse paradigma usa o conceito de linhas e colunas para definir a estrutura e o posicionamento desejados dos blocos em uma determinada página.</p>
+        
+        <p>Existem dois blocos de construção básicos de cada Flex Layout:</p>
+        <ul>
+            <li><code>flex-layout.row</code></li>
+            <li><code>flex-layout.col</code></li>
+        </ul>
+
+        <p class="note-block">Se você já está familiarizado com o Flexbox utilizado no CSS, o Flex Layout deve ser simples de entender, já que o Flexbox está sendo utilizado "por debaixo dos panos" pelo <code>flex-layout.row</code> e <code>flex-layout.col</code>.</p>
+
+        <h3>Flex Layout na Prática</h3>
+        <p>Com o Flex Layout é possível criar layouts personalizados, utilizando a estrutura de linhas e colunas do Flexbox.</p>
+        <p class="note-block">Analisando a documentação do bloco, vemos que você pode utilizar qualquer array de blocos como children do Flex Layout. Além disso, você deve sempre usar <code>flex-layout.row</code> e <code>flex-layout.col</code>, NUNCA flex-layout de forma isolada.</p>
+        <p>Abaixo, temos um exemplo de flex layout composto de um <code>flex-layout.row</code> com dois children: um <code>info-card</code> e um <code>rich-text</code>:</p>
+
+        <pre><code>  "flex-layout.row":{
+    "children": [
+      "info-card#rethink",
+      "rich-text#deletar"
+    ]
+  },
+
+ "info-card#rethink": {
+    "props": {
+      "imageUrl": "https://appliancetheme.vteximg.com.br/arquivos/utensilios-cozinha-min.png",
+      "isFullModeStyle": true,
+      "headline": "Time to rethink your kitchen",
+      "callToActionText": "Discover",
+      "textPosition": "center"
+    }
+  },
+
+  "rich-text#deletar": {
+    "props": {
+      "text": "I'll be deleted soon"
+    }
+  }</code></pre>
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>Projeto Faculdade</p>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        menu.classList.toggle('active');
+    });
+
+    // Scroll Reveal Animation para o conteúdo da aula
+    const revealElements = document.querySelectorAll('.lesson-content p, .lesson-content h3, .lesson-content ul, .lesson-content pre');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
